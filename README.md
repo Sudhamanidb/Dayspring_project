@@ -26,7 +26,7 @@ Step 5: Create a folder for projects:
    cd rails_projects
    
 Step 6: Create a new Rails app:
-   rails new my_first_app
+    rails new my_first_app
    
    cd my_first_app
 
@@ -38,8 +38,8 @@ Step 7: Start server:
 Step 8: Open browser and go to:
    http://localhost:3000
 (Optional) 
-Change port:
+   Change port:
    rails server -p YOUR_PORT_NUMBER
    
-Stop server:
+   Stop server:
    Ctrl + C
