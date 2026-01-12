@@ -1,83 +1,36 @@
-RUBY ON RAILS – USEFUL COMMANDS (WINDOWS)
+RUBY ON RAILS – WINDOWS CHEAT SHEET
+====================================
 
-----------------------------------
-1. CHECK INSTALLATION
-----------------------------------
+1️⃣ INSTALL RUBY
+----------------
+Step 1: Download and install Ruby from https://rubyinstaller.org/
+Step 2: Verify installation:
+   ruby -v
 
-Check Ruby version:
-ruby -v
+2️⃣ INSTALL RAILS
+-----------------
+Step 3: Install Rails gem (use CMD as Administrator):
+   gem install rails
+Step 4: Verify installation:
+   rails -v
 
-Check Gem version:
-gem -v
+3️⃣ CREATE NEW RAILS PROJECT
+----------------------------
+Step 5: Create a folder for projects:
+   cd C:\Users\Sudha
+   mkdir rails_projects
+   cd rails_projects
+Step 6: Create a new Rails app:
+   rails new my_first_app
+   cd my_first_app
 
-Check Rails version:
-rails -v
-
-Check Bundler version:
-bundle -v
-
-
-----------------------------------
-2. MSYS2 / DEVKIT COMMANDS
-----------------------------------
-
-Enable MSYS2 environment:
-ridk enable
-
-Install development tools:
-pacman -S --needed base-devel mingw-w64-ucrt-x86_64-toolchain
-
-Install libyaml (important for Rails):
-pacman -S libyaml pkgconf
-
-
-----------------------------------
-3. CREATE RAILS PROJECT
-----------------------------------
-
-Go to user folder:
-cd C:\Users\Sudha
-
-Create projects folder:
-mkdir rails_projects
-cd rails_projects
-
-Create new Rails project:
-rails new my_first_app
-
-Enter project folder:
-cd my_first_app
-
-
-----------------------------------
-4. RUN RAILS SERVER
-----------------------------------
-
-Start server:
-rails server
-
-Open browser:
-http://localhost:3000
-
+4️⃣ RUN RAILS SERVER
+--------------------
+Step 7: Start server:
+   rails server
+Step 8: Open browser and go to:
+   http://localhost:3000
+(Optional) Change port:
+   rails server -p YOUR_PORT_NUMBER
 Stop server:
-Ctrl + C
-
-----------------------------------
-5. BUNDLE / GEMS
-----------------------------------
-
-Install gems:
-bundle install
-
-Update gems:
-bundle update
-
-----------------------------------
-6. DAILY WORKFLOW
-----------------------------------
-
-cd rails_projects
-cd my_first_app
-rails server
-
-
+   Ctrl + C
