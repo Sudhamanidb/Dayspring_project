@@ -1,5 +1,4 @@
-RUBY ON RAILS – WINDOWS CHEAT SHEET
-====================================
+**DAY 1**
 
 1️⃣ INSTALL RUBY
 ----------------
@@ -35,9 +34,12 @@ Step 6: Create a new Rails app:
 --------------------
 Step 7: Start server:
    rails server
+   
 Step 8: Open browser and go to:
    http://localhost:3000
-(Optional) Change port:
+(Optional) 
+Change port:
    rails server -p YOUR_PORT_NUMBER
+   
 Stop server:
    Ctrl + C
