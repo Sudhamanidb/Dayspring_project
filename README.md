@@ -58,8 +58,3 @@ STEP 7: Open in browser
 http://localhost:3000/customers
 
 
-### 1️⃣ Check installations
-ruby -v
-rails -v
-git -v
-
