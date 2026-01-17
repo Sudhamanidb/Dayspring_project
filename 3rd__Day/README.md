@@ -3,6 +3,7 @@
 On Day 3, I learned the core features of Ruby on Rails and understood the basic file & folder structure of a Rails application. This helped me understand how Rails works behind the scenes.
 
 🚀 Main Features of Rails
+
 ✨ 1. Syntactic Sugar
 
 Rails reduces repetitive coding by auto-generating code for us.
@@ -15,13 +16,9 @@ Saves time by avoiding manual setup
 
 rails generate model Customer
 
-
 This command generates:
-
 Model file
-
 Migration file
-
 Test files
 
 ⚙️ 2. Convention Over Configuration
