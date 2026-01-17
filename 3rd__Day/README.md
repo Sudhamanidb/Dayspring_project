@@ -1,46 +1,49 @@
 📅 Day 3 – Rails Features & File Structure
 
-On Day 3, I learned the core features of Ruby on Rails and understood the basic file & folder structure of a Rails application. This helped me understand how Rails works behind the scenes.
+On Day 3, I learned the core features of Ruby on Rails and explored the basic file and folder structure of a Rails application.
+This helped me understand how Rails works behind the scenes and why it is so developer-friendly.
 
-🚀 Main Features of Rails
+🚀 Main Features of Ruby on Rails
 ✨ 1. Syntactic Sugar
 
-Rails reduces repetitive coding by auto-generating code for us.
+Rails reduces repetitive and boilerplate code by auto-generating files and logic for us.
 
-Automatically creates Model, View, and Controller (MVC) files
+🔹 Automatically creates Model, View, and Controller (MVC) files
+🔹 Saves development time
+🔹 Reduces manual configuration
 
-Saves time by avoiding manual setup
-
-📌 Example:
+📌 Example Command
 
 rails generate model Customer
 
 
-This command generates:
+📂 This command generates:
 
-Model file
+Model file (customer.rb)
 
 Migration file
 
 Test files
 
+👉 This shows how Rails simplifies development with minimal effort.
+
 ⚙️ 2. Convention Over Configuration
 
-Rails follows predefined naming rules, so we don’t need to configure everything manually.
+Rails follows predefined naming conventions, so we don’t need to configure everything manually.
 
-📛 Naming Rules:
-Component	Naming Rule
+📛 Naming Rules
+Component	Naming Convention
 Model	Singular → Customer
 Controller	Plural → CustomersController
-Table	Plural → customers
+Database Table	Plural → customers
 
-✅ When conventions are followed, Rails automatically connects everything.
+✅ When these conventions are followed, Rails automatically links models, controllers, views, and database tables.
 
 📁 Config Folder (config/)
 
 This folder controls how the Rails application behaves.
 
-Important Files:
+Important Files
 
 database.yml → Database connection settings
 
@@ -48,44 +51,34 @@ routes.rb → Maps URLs to controller actions
 
 application.rb → Global application configuration
 
-environment.rb → Entry point of the app
+environment.rb → Entry point of the application
 
-environments/ → Environment-specific settings:
+📂 Environment-specific settings (environments/)
 
-development
+development → Used during development
 
-test
+test → Used for testing
 
-production
+production → Used in live deployment
 
 🗄️ DB Folder (db/)
 
-This folder manages all database-related operations.
+This folder handles all database-related operations.
 
-Important Files:
+Important Files
 
-migrate/ → Database migration files (table creation & changes)
+migrate/ → Migration files (create & modify tables)
 
-schema.rb → Auto-generated snapshot of current DB structure
+schema.rb → Auto-generated snapshot of current database structure
 
 seeds.rb → Used to insert sample or initial data
 
-⚠️ Note: schema.rb should never be edited manually.
+⚠️ Important Note
+schema.rb is auto-generated and should never be edited manually.
 
 ❌ Mistakes Made (Day 3)
 
 ❌ Confused singular vs plural naming for models and controllers
+❌ Tried editing schema.rb manually
 
-❌ Tried editing schema.rb manually (learned it is auto-generated)
-
-✅ These mistakes helped me better understand Rails conventions and best practices.
-
-📚 Key Takeaways
-
-Rails follows MVC architecture
-
-Naming conventions are very important
-
-Configuration is mostly handled automatically
-
-Database changes should be done via migrations only
+✅ These mistakes helped me understand Rails conventions and best practices better.
