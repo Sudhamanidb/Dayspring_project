@@ -3,7 +3,6 @@
 On Day 3, I learned the core features of Ruby on Rails and understood the basic file & folder structure of a Rails application. This helped me understand how Rails works behind the scenes.
 
 🚀 Main Features of Rails
-
 ✨ 1. Syntactic Sugar
 
 Rails reduces repetitive coding by auto-generating code for us.
@@ -16,14 +15,18 @@ Saves time by avoiding manual setup
 
 rails generate model Customer
 
+
 This command generates:
+
 Model file
+
 Migration file
+
 Test files
 
 ⚙️ 2. Convention Over Configuration
 
-Rails follows predefined naming rules so we don’t need to configure everything manually.
+Rails follows predefined naming rules, so we don’t need to configure everything manually.
 
 📛 Naming Rules:
 Component	Naming Rule
@@ -47,7 +50,7 @@ application.rb → Global application configuration
 
 environment.rb → Entry point of the app
 
-environments/ → Settings for:
+environments/ → Environment-specific settings:
 
 development
 
@@ -67,8 +70,7 @@ schema.rb → Auto-generated snapshot of current DB structure
 
 seeds.rb → Used to insert sample or initial data
 
-⚠️ Note:
-schema.rb should never be edited manually.
+⚠️ Note: schema.rb should never be edited manually.
 
 ❌ Mistakes Made (Day 3)
 
