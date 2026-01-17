@@ -1,24 +1,53 @@
-# README
+---
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Day 1 – Ruby & Rails Basics
 
-Things you may want to cover:
+### Ruby
 
-* Ruby version
+* Ruby is a **dynamically typed**, **open-source** programming language known for **simplicity** and **developer productivity**.
+* Everything in Ruby is an **object**.
+* Latest stable version: **Ruby 3.x**.
+* Ruby generally follows **SOLID principles** (with limited emphasis on Interface Segregation due to Ruby’s dynamic nature).
 
-* System dependencies
+### Rails
 
-* Configuration
+* Rails is a **web application framework built on Ruby**.
+* It helps developers build applications faster by providing conventions and boilerplate code.
+* Latest major version: **Rails 8.x**.
 
-* Database creation
+### Important Points
 
-* Database initialization
+* Ruby version management is done using **RVM** or **RBENV** (used to switch Ruby versions).
+* Install Rails using:
 
-* How to run the test suite
+  ```bash
+  gem install rails
+  ```
+* Ruby alone can create applications, but frameworks like Rails:
 
-* Services (job queues, cache servers, search engines, etc.)
+  * Reduce development time
+  * Provide structure
+  * Generate boilerplate code automatically
 
-* Deployment instructions
+### Creating a Rails Project
 
-* ...
+Rails projects can be created in multiple ways:
+
+1. `rails new project_name`
+2. `rails new project_name --api` (API-only / two-tier architecture)
+3. **Scaffold** (auto-creates MVC components)
+
+### Commands to Remember
+
+* `ruby --version`
+* `rails --version`
+* `gem install rails`
+* `rails new ProjectName`
+
+### Mistakes Made (Day 1)
+
+* Confused **Ruby** with **Rails** (thinking both are the same).
+* Assumed Rails is mandatory to write Ruby programs.
+* Minor spelling mistakes in commands (`gem insatll rails`).
+
+---
