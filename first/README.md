@@ -1,5 +1,3 @@
----
-
 ## Day 1 – Ruby & Rails Basics
 
 ### Ruby
@@ -43,11 +41,3 @@ Rails projects can be created in multiple ways:
 * `rails --version`
 * `gem install rails`
 * `rails new ProjectName`
-
-### Mistakes Made (Day 1)
-
-* Confused **Ruby** with **Rails** (thinking both are the same).
-* Assumed Rails is mandatory to write Ruby programs.
-* Minor spelling mistakes in commands (`gem insatll rails`).
-
----
