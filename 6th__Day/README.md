@@ -1,14 +1,3 @@
-Got it 👍
-You want this **EXACTLY like your Day 5 notes** —
-✔ clean
-✔ well-commented
-✔ easy to paste into **Notepad**
-✔ beginner-friendly
-✔ explains **what + why**
-
-Below is your **Day 6–Style Notes** made from the code you shared.
-
----
 
 📅 **Day 6 – Ruby Loops & Enumerable Methods**
 
