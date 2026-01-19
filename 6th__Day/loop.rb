@@ -1,3 +1,6 @@
+"MAIN PROJECT CHANGES HAVE DONE ........ SO YOU CAN GO TO SECONDDAY FOLDER AND SEE "
+
+
 arr=[2,4,6,8,10,12]
 for i in 10..15  #-->.. means opening the loop/for i<13
     print i
