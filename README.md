@@ -1,4 +1,4 @@
-**DAY 1**
+** 📅 DAY 1**
 
 1️⃣ INSTALL RUBY
 ----------------
@@ -101,7 +101,7 @@ Rails projects can be created in multiple ways:
 
 ---
 
-## Day 2 – PostgreSQL, Scaffold & Console
+## 📅 Day 2 – PostgreSQL, Scaffold & Console
 
 ### Project with PostgreSQL
 
@@ -164,7 +164,7 @@ rails generate controller Customers
 
 ---
 
-## Day 3 – Rails Features & File Structure
+## 📅 Day 3 – Rails Features & File Structure
 
 ### Main Features
 
@@ -216,7 +216,7 @@ Important files:
 
 ---
 
-## Day 4 – app Folder & Ruby Basics
+## 📅 Day 4 – app Folder & Ruby Basics
 
 ### app Folder
 
@@ -260,7 +260,7 @@ All data types are objects.
 
 ---
 
-## Day 5 – Methods, Type Casting & Product Scaffold
+## 📅Day 5 – Methods, Type Casting & Product Scaffold
 
 ### Methods & Comments
 
@@ -334,4 +334,156 @@ Product.create(name: "Tesla 1", description: "The tesla 1 product", price: 900, 
 * Database changes require **migrations + code updates**.
 * Warnings (like VIPS) are different from actual errors.
 
----
+-
+
+📅 Day 6 – Ruby Loops & Enumerable Methods
+
+On Day 6, I learned how Ruby handles looping and how enumerable methods make working with arrays easier and cleaner.
+
+--------------------------------------------------
+
+Ruby Loops
+
+--------------------------------------------------
+
+FOR LOOP  
+Used when the number of iterations is known.
+
+arr = [2, 4, 6, 8, 10, 12]
+
+for i in 10..15
+  print i
+end
+
+Key Points:
+- for loop increments automatically
+- manual increment does not work
+- ".." represents an inclusive range
+
+--------------------------------------------------
+
+WHILE LOOP  
+Used when the condition must be checked before execution.
+
+i = 0
+while i <= 10
+  puts i
+  i += 1
+end
+
+Key Points:
+- variable initialization is required
+- manual increment is mandatory
+- loop stops when condition becomes false
+
+--------------------------------------------------
+
+LOOP DO  
+Used for infinite loops with manual exit control.
+
+k = 0
+loop do
+  puts "student : #{k}"
+  k += 1
+  break if k > 30
+end
+
+Key Points:
+- loop runs indefinitely
+- break is required to stop the loop
+
+--------------------------------------------------
+
+UNTIL LOOP  
+Opposite of while loop.
+
+c = 0
+until c > 15
+  puts c
+  c += 1
+end
+
+Key Points:
+- while runs when condition is true
+- until runs when condition is false
+
+--------------------------------------------------
+
+Loop Control Keywords
+
+break  → exits the loop  
+next   → skips the current iteration  
+redo   → repeats the current iteration  
+
+--------------------------------------------------
+
+Enumerable Methods
+
+--------------------------------------------------
+
+Array Used
+
+arr = [2, 4, 6, 8, 10, 12]
+
+--------------------------------------------------
+
+SELECT  
+Returns values that satisfy the condition.
+
+arr.select { |num| num > 4 }
+
+- non-destructive method
+- original array remains unchanged
+
+--------------------------------------------------
+
+SELECT!  
+Destructive version of select.
+
+arr.select! { |num| num > 4 }
+
+- modifies the original array
+
+--------------------------------------------------
+
+REJECT / REJECT!  
+Removes values that satisfy the condition.
+
+arr.reject { |num| num > 2 }
+arr.reject! { |num| num > 2 }
+
+- reject is non-destructive
+- reject! modifies the original array
+
+--------------------------------------------------
+
+ANY? AND ALL?
+
+arr2 = [1, 2, 3, 4, 5]
+
+arr2.any? { |num| num > 5 }
+arr2.all? { |num| num > 0 }
+
+- any? returns true if at least one condition is true
+- all? returns true if all conditions are true
+
+--------------------------------------------------
+
+MAP / COLLECT / EACH
+
+arr2.map { |num| num ** 2 }
+arr2.collect { |num| num ** 2 }
+arr2.each { |num| num ** 2 }
+
+- map and collect return a new array
+- each returns the original array
+
+--------------------------------------------------
+
+Key Learning (Day 6)
+
+- Ruby provides multiple loop types for different use cases
+- Enumerable methods reduce manual looping
+- Destructive methods permanently modify data
+- Using blocks makes Ruby code clean and readable
+
