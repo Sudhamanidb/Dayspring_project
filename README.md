@@ -336,154 +336,202 @@ Product.create(name: "Tesla 1", description: "The tesla 1 product", price: 900, 
 
 -
 
-📅 Day 6 – Ruby Loops & Enumerable Methods
+Perfect 👍
+Below is your **Day 6 README version**, **same quality as Day 5**, but with **repetition removed**, **clean**, **well-commented**, and **easy to read**.
 
-On Day 6, I learned how Ruby handles looping and how enumerable methods make working with arrays easier and cleaner.
+You can **directly copy-paste this into README.md**.
 
---------------------------------------------------
+---
 
-Ruby Loops
+📅 **Day 6 – Ruby Loops & Enumerable Methods**
 
---------------------------------------------------
+On Day 6, I learned how different loops work in Ruby and how enumerable methods simplify iteration and data filtering.
 
-FOR LOOP  
-Used when the number of iterations is known.
+---
 
+## 🔁 Ruby Loops
+
+### `for` Loop
+
+Used when the range or count is known.
+
+```ruby
 arr = [2, 4, 6, 8, 10, 12]
 
-for i in 10..15
+for i in 10..15   # inclusive range
   print i
 end
+```
 
 Key Points:
-- for loop increments automatically
-- manual increment does not work
-- ".." represents an inclusive range
 
---------------------------------------------------
+* Automatically increments
+* Manual increment does not work
+* `..` includes both start and end values
 
-WHILE LOOP  
-Used when the condition must be checked before execution.
+---
 
+### `while` Loop
+
+Executes while the condition is true.
+
+```ruby
 i = 0
 while i <= 10
   puts i
   i += 1
 end
+```
 
 Key Points:
-- variable initialization is required
-- manual increment is mandatory
-- loop stops when condition becomes false
 
---------------------------------------------------
+* Condition checked before execution
+* Manual initialization and increment required
 
-LOOP DO  
-Used for infinite loops with manual exit control.
+---
 
+### `loop do`
+
+Infinite loop with explicit exit condition.
+
+```ruby
 k = 0
 loop do
   puts "student : #{k}"
   k += 1
   break if k > 30
 end
+```
 
 Key Points:
-- loop runs indefinitely
-- break is required to stop the loop
 
---------------------------------------------------
+* Runs continuously
+* `break` is mandatory to stop
 
-UNTIL LOOP  
-Opposite of while loop.
+---
 
+### `until` Loop
+
+Opposite of `while`.
+
+```ruby
 c = 0
 until c > 15
   puts c
   c += 1
 end
+```
 
 Key Points:
-- while runs when condition is true
-- until runs when condition is false
 
---------------------------------------------------
+* Runs while condition is false
 
-Loop Control Keywords
+---
 
-break  → exits the loop  
-next   → skips the current iteration  
-redo   → repeats the current iteration  
+### Loop Control Keywords
 
---------------------------------------------------
+```text
+break → exits the loop
+next  → skips current iteration
+redo  → repeats current iteration
+```
 
-Enumerable Methods
+---
 
---------------------------------------------------
+## 🔂 Enumerable Methods
 
-Array Used
+### Array Used
 
+```ruby
 arr = [2, 4, 6, 8, 10, 12]
+```
 
---------------------------------------------------
+---
 
-SELECT  
-Returns values that satisfy the condition.
+### `select` and `select!`
 
+```ruby
 arr.select { |num| num > 4 }
-
-- non-destructive method
-- original array remains unchanged
-
---------------------------------------------------
-
-SELECT!  
-Destructive version of select.
-
 arr.select! { |num| num > 4 }
+```
 
-- modifies the original array
+Key Difference:
 
---------------------------------------------------
+* `select` returns filtered values
+* `select!` modifies the original array
 
-REJECT / REJECT!  
-Removes values that satisfy the condition.
+---
 
+### `reject` and `reject!`
+
+```ruby
 arr.reject { |num| num > 2 }
 arr.reject! { |num| num > 2 }
+```
 
-- reject is non-destructive
-- reject! modifies the original array
+Key Difference:
 
---------------------------------------------------
+* `reject` keeps original array unchanged
+* `reject!` permanently modifies it
 
-ANY? AND ALL?
+---
 
+### Destructive vs Non-Destructive Summary
+
+```text
+select   → non-destructive
+select!  → destructive
+reject   → non-destructive
+reject!  → destructive
+```
+
+---
+
+### `any?` and `all?`
+
+```ruby
 arr2 = [1, 2, 3, 4, 5]
 
 arr2.any? { |num| num > 5 }
 arr2.all? { |num| num > 0 }
+```
 
-- any? returns true if at least one condition is true
-- all? returns true if all conditions are true
+Meaning:
 
---------------------------------------------------
+* `any?` → at least one condition is true
+* `all?` → all conditions are true
 
-MAP / COLLECT / EACH
+---
 
+### `map`, `collect`, `each`
+
+```ruby
 arr2.map { |num| num ** 2 }
 arr2.collect { |num| num ** 2 }
 arr2.each { |num| num ** 2 }
+```
 
-- map and collect return a new array
-- each returns the original array
+Key Difference:
 
---------------------------------------------------
+* `map` and `collect` return a new array
+* `each` returns the original array
 
-Key Learning (Day 6)
+---
 
-- Ruby provides multiple loop types for different use cases
-- Enumerable methods reduce manual looping
-- Destructive methods permanently modify data
-- Using blocks makes Ruby code clean and readable
+## 🧠 Key Learning (Day 6)
+
+* Ruby offers multiple loop types for different scenarios
+* Enumerable methods reduce manual looping
+* Methods with `!` permanently change data
+* Blocks make Ruby code clean and readable
+
+---
+
+If you want next:
+
+* Day 7 – Hashes (same clean style)
+* Git commit message for Day 6
+* Interview questions from Day 6
+
+Just tell me 👍
 
