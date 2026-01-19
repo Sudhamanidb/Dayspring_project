@@ -334,20 +334,10 @@ Product.create(name: "Tesla 1", description: "The tesla 1 product", price: 900, 
 * Database changes require **migrations + code updates**.
 * Warnings (like VIPS) are different from actual errors.
 
--
-
-Perfect 👍
-Below is your **Day 6 README version**, **same quality as Day 5**, but with **repetition removed**, **clean**, **well-commented**, and **easy to read**.
-
-You can **directly copy-paste this into README.md**.
 
 ---
 
 📅 **Day 6 – Ruby Loops & Enumerable Methods**
-
-On Day 6, I learned how different loops work in Ruby and how enumerable methods simplify iteration and data filtering.
-
----
 
 ## 🔁 Ruby Loops
 
@@ -525,13 +515,4 @@ Key Difference:
 * Methods with `!` permanently change data
 * Blocks make Ruby code clean and readable
 
----
-
-If you want next:
-
-* Day 7 – Hashes (same clean style)
-* Git commit message for Day 6
-* Interview questions from Day 6
-
-Just tell me 👍
 
