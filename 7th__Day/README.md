@@ -1,54 +1,63 @@
-📅 Day 7 – Ruby OOP (Inheritance & Method Overriding)
 
-On Day 7, I learned the core Object-Oriented Programming concepts in Ruby, focusing on how classes interact using inheritance and how methods can be overridden.
+📅 **Day 7 – Ruby OOP (Inheritance & Method Overriding)**
 
-Topics Covered
-Classes & Objects
+### Classes & Objects
 
-A class is a blueprint for creating objects.
+* A class is a blueprint for creating objects.
+* An object is an instance of a class.
+* Methods define the behavior of an object.
+* Instance variables (`@variable`) store object-specific data.
 
-An object is an instance of a class.
+---
 
-Methods define the behavior of an object.
+### Inheritance
 
-Instance variables (@variable) store object-specific data.
+* Inheritance allows one class to reuse another class’s methods and variables.
+* Child classes inherit behavior from parent classes using `<`.
+* Helps reduce code duplication.
+* Parent instance variables are accessible in child classes.
 
-Inheritance
+---
 
-Inheritance allows one class to reuse another class’s methods and variables.
+### Method Overriding
 
-Child classes inherit behavior from parent classes using <.
+* Child class can redefine a method from the parent class.
+* Ruby always calls the child method first if names match.
+* Overriding is used to change or extend existing behavior.
 
-Helps reduce code duplication.
+---
 
-Parent instance variables are accessible in child classes.
+### `super` Keyword
 
-Method Overriding
+* `super` calls the parent class method.
+* Can be used with or without arguments.
+* Helps extend parent functionality instead of replacing it.
 
-Child class can redefine a method from the parent class.
+---
 
-Ruby always calls the child method first if names match.
+### Method Lookup
 
-Overriding is used to change or extend existing behavior.
+* Ruby searches for methods in this order:
 
-super Keyword
+  1. Current class
+  2. Parent class
+  3. Modules
+  4. Object
+* `ancestors` shows the method lookup chain.
 
-super calls the parent class method.
+---
 
-Can be used with or without arguments.
+### Built-in Reflection Methods
 
-Helps extend parent functionality instead of replacing it.
+* `respond_to?` checks if an object can respond to a method.
+* Useful for safer method calls and debugging.
 
-Method Lookup
+---
 
-Ruby searches for methods in this order:
+### Method Overriding Example (Concept)
 
-Current class
+* Same method name in parent and child.
+* Parent logic can be reused using `super`.
+* Child method changes output or behavior.
 
-Parent class
-
-Modules
-
-Object
-
-ancestors shows the method lookup chain.
+---
