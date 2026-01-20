@@ -1,4 +1,4 @@
-** 📅 DAY 1**
+## DAY 1
 
 1️⃣ INSTALL RUBY
 ----------------
@@ -101,7 +101,7 @@ Rails projects can be created in multiple ways:
 
 ---
 
-## 📅 Day 2 – PostgreSQL, Scaffold & Console
+##  Day 2 – PostgreSQL, Scaffold & Console
 
 ### Project with PostgreSQL
 
@@ -164,7 +164,7 @@ rails generate controller Customers
 
 ---
 
-## 📅 Day 3 – Rails Features & File Structure
+##  Day 3 – Rails Features & File Structure
 
 ### Main Features
 
@@ -216,7 +216,7 @@ Important files:
 
 ---
 
-## 📅 Day 4 – app Folder & Ruby Basics
+##  Day 4 – app Folder & Ruby Basics
 
 ### app Folder
 
@@ -260,7 +260,7 @@ All data types are objects.
 
 ---
 
-## 📅Day 5 – Methods, Type Casting & Product Scaffold
+## Day 5 – Methods, Type Casting & Product Scaffold
 
 ### Methods & Comments
 
@@ -337,7 +337,7 @@ Product.create(name: "Tesla 1", description: "The tesla 1 product", price: 900, 
 
 ---
 
-📅 **Day 6 – Ruby Loops & Enumerable Methods**
+**Day 6 – Ruby Loops & Enumerable Methods**
 
 ##  Ruby Loops
 
@@ -516,7 +516,7 @@ Key Difference:
 * Blocks make Ruby code clean and readable
 
 ---
-📅 **Day 7 – Ruby OOPS (Inheritance & Method Overriding**
+**Day 7 – Ruby OOPS (Inheritance & Method Overriding**
 ---
 ### Classes & Objects
 
