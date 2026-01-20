@@ -515,9 +515,9 @@ Key Difference:
 * Methods with `!` permanently change data
 * Blocks make Ruby code clean and readable
 
-
-##📅 Day 7 – Ruby OOP (Inheritance & Method Overriding)
-
+---
+📅 **Day 7 – Ruby OOPS (Inheritance & Method Overriding**
+---
 ### Classes & Objects
 
 * A class is a blueprint for creating objects.
