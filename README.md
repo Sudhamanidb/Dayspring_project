@@ -111,7 +111,7 @@ Main database commands:
 * `rails db:migrate` → Applies schema changes
 * `rails db:seed` → Inserts data from `seeds.rb`
 
-⚠️ Correct order is important: **create → migrate → seed**
+* Correct order is important: **create → migrate → seed**
 
 ### Scaffold
 
@@ -150,7 +150,7 @@ rails generate controller Customers
   * password
   * database name
 
-⚠️ If any value is wrong → `rails db:create` fails
+* If any value is wrong → `rails db:create` fails
 
 ### Rails Console
 
@@ -339,7 +339,7 @@ Product.create(name: "Tesla 1", description: "The tesla 1 product", price: 900, 
 
 📅 **Day 6 – Ruby Loops & Enumerable Methods**
 
-## 🔁 Ruby Loops
+##  Ruby Loops
 
 ### `for` Loop
 
@@ -428,7 +428,7 @@ redo  → repeats current iteration
 
 ---
 
-## 🔂 Enumerable Methods
+##  Enumerable Methods
 
 ### Array Used
 
@@ -508,7 +508,7 @@ Key Difference:
 
 ---
 
-## 🧠 Key Learning (Day 6)
+## Key Learning (Day 6)
 
 * Ruby offers multiple loop types for different scenarios
 * Enumerable methods reduce manual looping
