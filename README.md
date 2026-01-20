@@ -516,7 +516,7 @@ Key Difference:
 * Blocks make Ruby code clean and readable
 
 
-📅 **Day 7 – Ruby OOP (Inheritance & Method Overriding)**
+##📅 Day 7 – Ruby OOP (Inheritance & Method Overriding)
 
 ### Classes & Objects
 
