@@ -1,0 +1,75 @@
+## Day 5 – Methods, Type Casting & Product Scaffold
+
+### Methods & Comments
+
+* Ruby methods return the **last evaluated expression automatically**.
+* `return` is optional.
+
+Comments:
+
+* Single-line → `#`
+* Multi-line → `=begin` / `=end`
+
+### Type Casting
+
+* User input is always a **String**.
+* Ruby does **not** do implicit type casting.
+
+Examples:
+
+* `"10".to_i`
+* `10.to_s`
+* `"10.5".to_f`
+
+### Product Scaffold
+
+Command:
+
+```bash
+rails generate scaffold Product name:string description:text price:decimal stock:integer is_active:boolean
+```
+
+After any DB-related change:
+
+```bash
+rails db:migrate
+```
+
+### Ways to Insert Data
+
+1. **UI** (Rails-generated forms)
+2. **Manual SQL (DBeaver)**
+3. **Seeds file (`db/seeds.rb`)**
+4. **Rails Console**
+
+Example SQL:
+
+```sql
+INSERT INTO products (name, description, price, stock, is_active, created_at, updated_at)
+VALUES ('IQ', 'The IQ new product', 80, 2, TRUE, '2026-01-16', '2026-01-16');
+```
+
+Example seed:
+
+```ruby
+Product.create(name: "Tesla 1", description: "The tesla 1 product", price: 900, stock: 30, is_active: true)
+```
+
+### Mistakes Made (Day 5 – Important)
+
+* Gave **space in column names** while writing Rails queries.
+* Used wrong case in model name (must start with **capital letter**).
+* Forgot timestamps (`created_at`, `updated_at`) while inserting via SQL.
+* Misspelled column names (`stack` instead of `stock`).
+* Forgot to run `rails db:migrate` after scaffold.
+
+---
+
+## Key Learning from Mistakes
+
+* Rails is **convention-driven** → names & order matter.
+* YAML files are **very strict** (indentation & duplication break Rails).
+* Database changes require **migrations + code updates**.
+* Warnings (like VIPS) are different from actual errors.
+
+---

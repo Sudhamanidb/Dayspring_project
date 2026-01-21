@@ -1,0 +1,67 @@
+<div style="
+  min-height: 100vh;
+  background: linear-gradient(120deg, #5670f0, #9333ea, #f0f1f5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  font-family: 'Segoe UI', Arial, sans-serif;
+">
+
+  <div style="
+    width: 100%;
+    max-width: 500px;
+    background: #ffffff;
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+    text-align: left;
+  ">
+
+    <!-- Heading -->
+    <h2 style="
+      color: #4f46e5;
+      text-align: center;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 30px;
+    ">
+      👤 Customer Details
+    </h2>
+
+    <!-- Customer Info -->
+    <div style="margin-bottom: 20px;">
+      <p style="font-size: 16px; color: #333333; margin-bottom: 10px;">
+        <strong>Name:</strong> <span style="color: #1f2937;"><%= @customer.name %></span>
+      </p>
+
+      <p style="font-size: 16px; color: #333333;">
+        <strong>Email:</strong> <span style="color: #1f2937;"><%= @customer.email %></span>
+      </p>
+    </div>
+
+    <!-- Action Buttons -->
+    <div style="text-align: center; margin-top: 30px; display: flex; justify-content: center; gap: 15px;">
+      <%= link_to "✏ Edit", edit_customer_path(@customer), style: "
+        text-decoration: none;
+        color: #ffffff;
+        background: #059669;
+        padding: 12px 25px;
+        border-radius: 25px;
+        font-weight: 500;
+        transition: transform 0.2s, background 0.2s;
+      ", onmouseover: "this.style.background='#047857'; this.style.transform='scale(1.05)'", onmouseout: "this.style.background='#059669'; this.style.transform='scale(1)'" %>
+
+      <%= link_to "⬅ Back", customers_path, style: "
+        text-decoration: none;
+        color: #ffffff;
+        background: #4f46e5;
+        padding: 12px 25px;
+        border-radius: 25px;
+        font-weight: 500;
+        transition: transform 0.2s, background 0.2s;
+      ", onmouseover: "this.style.background='#4338ca'; this.style.transform='scale(1.05)'", onmouseout: "this.style.background='#4f46e5'; this.style.transform='scale(1)'" %>
+    </div>
+
+  </div>
+</div>
