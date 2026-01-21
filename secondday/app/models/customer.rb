@@ -9,7 +9,6 @@ class Customer < ApplicationRecord
     #customer= Customer.all.limit(3);
     end
 
-
     def name_check
         # check name has onlyy alphabetic value
         if name =~ /\A[a-zA-Z]+\z/   
