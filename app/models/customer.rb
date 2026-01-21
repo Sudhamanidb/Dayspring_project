@@ -21,7 +21,6 @@ class Customer < ApplicationRecord
 
 end
 
-
 # To get output you can use below code in rails console
 
 # --> customer = Customer.first

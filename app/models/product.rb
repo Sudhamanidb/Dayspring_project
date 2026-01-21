@@ -1,5 +1,4 @@
 class Product < ApplicationRecord
-
     # step 1 : write one methos inside model
     # step 2 : assign value
     # step 3 : use select with price condition(status col--> if this select if that reject) on price 
@@ -19,6 +18,7 @@ def check_availability
     # ckeck  for the stock availabel more than 0
 end
 
+
 def apply_discount(discount_percentage)
     # use case statements and calulation discount on price
     case discount_percentage
@@ -34,6 +34,7 @@ def apply_discount(discount_percentage)
     return discounted_price
 end
 
+
 def total_amount
     # call the check_availability and then apply_discount use any math(round) and use to calculate the total amount
     if check_availability
@@ -43,4 +44,8 @@ def total_amount
     end
 end
 end
+
+
+
+# done and dusted
 
