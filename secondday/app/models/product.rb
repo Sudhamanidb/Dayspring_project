@@ -4,7 +4,6 @@ class Product < ApplicationRecord
     # step 3 : use select with price condition(status col--> if this select if that reject) on price 
     # step 4 : use all and any with active inactive (price)
 
-
     @status = Product.all.limit(10).pluck(:is_active)
     @price =Product.all.limit(10).pluck(:price)
     @stock=Product.all.limit(10).pluck(:stock)
