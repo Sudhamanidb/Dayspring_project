@@ -1,14 +1,14 @@
 =======
 ## DAY 1
 
-1️⃣ INSTALL RUBY
+1️--> INSTALL RUBY
 ----------------
 Step 1: Download and install Ruby from https://rubyinstaller.org/
 
 Step 2: Verify installation:
    ruby -v
 
-2️⃣ INSTALL RAILS
+2️--> INSTALL RAILS
 -----------------
 Step 3: Install Rails gem (use CMD as Administrator):
    gem install rails
@@ -16,7 +16,7 @@ Step 3: Install Rails gem (use CMD as Administrator):
 Step 4: Verify installation:
    rails -v
 
-3️⃣ CREATE NEW RAILS PROJECT
+3️--> CREATE NEW RAILS PROJECT
 ----------------------------
 Step 5: Create a folder for projects:
 
@@ -31,7 +31,7 @@ Step 6: Create a new Rails app:
    
    cd my_first_app
 
-4️⃣ RUN RAILS SERVER
+4️--> RUN RAILS SERVER
 --------------------
 Step 7: Start server:
    rails server
