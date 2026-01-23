@@ -1,4 +1,3 @@
-=======
 ## DAY 1
 
 1️--> INSTALL RUBY
@@ -847,6 +846,8 @@ end
 10. **Test validations in Rails console**
 
     * Always try creating invalid and valid records in the console to confirm your rules work.
+
+day10 completed
 
 
 
