@@ -1,5 +1,9 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[ show edit update destroy ]
+  
+    def out_of_stock
+      @products = Product.out_of_stock
+    end
 
   # GET /products or /products.json
   def index
@@ -67,4 +71,8 @@ class ProductsController < ApplicationController
     def product_params
       params.expect(product: [ :name, :description, :price, :stock, :is_active ])
     end
+
+
+
+
 end

@@ -1,9 +1,15 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: %i[ show edit update destroy ]
+  def blacklisted_customers
+      @customers = Customer.blacklisted_customers([3,6,9,10])
+    end
 
   # GET /customers or /customers.json
   def index
-    @customers = Customer.all
+    # list_of_customers = [1,2,3]
+    # @customers = Customer.blacklisted_customers(list_of_customers)
+     @customers = Customer.all
+    # @customers = Customer.unique_email
   end
 
   # GET /customers/1 or /customers/1.json
@@ -67,4 +73,6 @@ class CustomersController < ApplicationController
     def customer_params
       params.expect(customer: [ :name, :email, :age ])
     end
+
+    
 end

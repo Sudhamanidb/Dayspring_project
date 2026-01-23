@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  resources :products do
+    collection do
+      get 'out_of_stock'
+    end
+  end
+resources :customers do
+    collection do
+      get 'blacklisted_customers'
+    end
+  end
   resources :products
   get "home/index"
   resources :customers
@@ -14,4 +24,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  
 end
+
