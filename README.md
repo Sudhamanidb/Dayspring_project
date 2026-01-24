@@ -668,7 +668,7 @@ class Product
 end
 ```
 
-# Rails Models: Customer & Product Validations
+# 9 Rails Models: Customer & Product Validations
 
 ## 1️--> Customer Model (`Customer < ApplicationRecord`)
 ---
@@ -847,7 +847,107 @@ end
 
     * Always try creating invalid and valid records in the console to confirm your rules work.
 
-day10 completed
+# Day 10 – Rails Scopes
+
+A **scope** is a custom query defined in a Rails model. It is mainly used when the same query is needed multiple times.
+---
+
+## Scope Examples
+
+### 1. Out of Stock Products
+
+Fetch products whose stock is zero or less.
+
+```ruby
+scope :out_of_stock, -> { where("stock <= ?", 0) }
+#or
+scope :out_of_stock, -> { where(stock: 0) }
+```
+
+---
+
+### 2. Writing Custom / Raw SQL Query
+
+Scopes can also contain raw SQL queries.
+
+```ruby
+scope :test_scope, -> { query {} }
+```
+
+---
+
+### 3. Whitelisted Products
+
+Fetch products whose IDs are in a given list.
+
+```ruby
+scope :whitelisted_products, -> { where("id IN (?)", [1, 2, 3]) }
+```
+
+---
+
+### 4. Unique Emails
+
+Fetch distinct email values from records.
+
+```ruby
+scope :unique_emails, -> { where(email: "sudha@gmail.com").select(:email).distinct }
+```
+
+---
+
+### 5. Blacklisted Customers (Parameterized Scope)
+
+Scopes can accept parameters.
+
+```ruby
+scope :blacklisted_customers, ->(customer_ids) { where(id: customer_ids) }
+```
+
+Usage:
+
+```ruby
+@customers = Customer.blacklisted_customers([3, 6, 9, 10])
+```
+
+---
+
+## Method Chaining
+
+Scopes can be chained together because they return ActiveRecord relations.
+
+Example:
+
+```ruby
+Product.out_of_stock.whitelisted_products
+```
+
+---
+
+## Controller Examples ---like how will use
+
+### Customers Controller
+
+```ruby
+def index
+  @customers = Customer.all
+  # @customers = Customer.blacklisted_customers([1,2,3])
+end
+```
+
+---
+
+### Products Controller
+
+```ruby
+def index
+  @products = Product.out_of_stock
+end
+```
+
+
+-
+
 
 
 
