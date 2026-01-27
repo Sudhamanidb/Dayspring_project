@@ -1,3 +1,4 @@
+# DAY 11 Tasks + Notes
 
 ## Task 1. Generating a Controller
 
@@ -33,6 +34,8 @@ This comes under **Active Record**.
 * `test/models/admin_test.rb` → model test file
 * `test/fixtures/admins.yml` → test data
 
+`rails db:migrate` is used to modify the database schema
+
 ---
 
 ## Task 3. Deleting `show.html.erb` Page
@@ -43,7 +46,7 @@ If we **delete the `show.html.erb` file** and access the show page, will get thi
 ActionController::UnknownFormat in CustomersController#show
 CustomersController#show is missing a template for this request format.
 ```
-## Bcz:
+Bcz -->
 * `show` action exists in the controller
 * But the `show.html.erb` view file is missing
 
@@ -59,20 +62,17 @@ Bcz -->
 * If the route or action is not used, it does not crash the app
 
 ---
-`rails db:migrate` is used to modify the database schema
-
----
 ## Task 5.Changes in routes.rb
 
 ```ruby
-resources :products, skip: [:show]
+resources :products, except: [:show]
 resources :products, only: [:new, :destroy]
 ```
 ---
 * `show` route is removed
 * `/products/:id` is not available
 
-## If we try to open show page
+###  -> If we try to open show page
 
 URL:
 
@@ -80,7 +80,7 @@ URL:
 /products/1
 ```
 
-## We will get this error
+### We will get this error
 
 ```
 ActionController::RoutingError
