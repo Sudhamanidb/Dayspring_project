@@ -6,15 +6,17 @@ class CustomersController < ApplicationController
 
   # GET /customers or /customers.json
   def index
-    # list_of_customers = [1,2,3]
-    # @customers = Customer.blacklisted_customers(list_of_customers)
+    list_of_customers = [1,2,3,4,5,6,7]
+    @customers = Customer.blacklisted_customers(list_of_customers)
      @customers = Customer.all
     # @customers = Customer.unique_email
   end
 
   # GET /customers/1 or /customers/1.json
-  def show
-  end
+
+  # def show
+ 
+  # end
 
   # GET /customers/new
   def new

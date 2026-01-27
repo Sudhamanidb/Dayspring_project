@@ -1,15 +1,22 @@
 Rails.application.routes.draw do
-  resources :products do
+  resources :products, except: [:show] do
     collection do
       get 'out_of_stock'
     end
   end
+
+# resources :products, only: [:new] do
+#   collection do 
+#     get 'out-of-stock'
+#   end
+# end
+
 resources :customers do
     collection do
       get 'blacklisted_customers'
     end
   end
-  resources :products
+  # resources :products
   get "home/index"
   resources :customers
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -25,6 +32,9 @@ resources :customers do
   # Defines the root path route ("/")
   # root "posts#index"
 
-  
+# resources :products, only: [:new,:show]
+# resources :products, except: [:show, :new]
+# resources :products, expect: [:new,:delete,:show]
+
 end
 

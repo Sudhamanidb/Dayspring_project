@@ -63,7 +63,8 @@
       </thead>
 
       <tbody>
-        <% @customers.each do |customer| %>
+      <% @customers = @customers.blacklisted_customers([1,2,3,4,5,6,7])%>  
+      <% @customers.each do |customer| %>
           <tr style="border-bottom: 1px solid #eee;">
             <td style="padding: 14px;"><%= customer.name %></td>
             <td style="padding: 14px;"><%= customer.email %></td>

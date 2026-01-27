@@ -6,20 +6,20 @@ class Product < ApplicationRecord
 
 validates :name, presence: true, length:{maximum: 30, minimum: 4} 
 validates :price, numericality: { greater_than_or_equal_to: 1}
-# validates :stock, numericality: {greater_than_or_equal_to:1}, length: {maximum: 500}
-validates :description, length: {minimum: 8, maximum: 460}, format: {with: /\A[a-zA-Z0-9]+\z/, message: "only allows char,number and space"}
+validates :stock, numericality: {greater_than_or_equal_to:1}, length: {maximum: 500}
+validates :description, length: {minimum: 8, maximum: 460}, format: {with: /\A[a-zA-Z0-9 ]+\z/, message: "only allows char,number and space"}
 validates :is_active, presence: true , if: :price? ,acceptance:true
 # validates :stock, presence: true, if: :is_active?
 
 # '->' lamda operator
-# scope :out_of_stock, -> { where("stock <= ?", 0) }
-# scope :whitelisted_products, -> {where("id IN (?)", [2, 3])}
+
+scope :whitelisted_products, -> {where("id IN (?)", [1,2, 3,4])}
 scope :out_of_stock, -> { where("stock <= ?", 0) }
 
 # ----------------------------------------------
 
 # scope :test_scope_for_joins, -> {joins(name_of_table.where.)}
-# scope :test, -> query0{ }   ---->inside query we can put any sql query
+# scope :test, -> query{ }   ---->inside query we can put any sql query
 # in html-----> <%= @Products.out_of_stock.count %> # to print the ruby things in webpage
 # in html-----> <% @products.each do |product| %> # to embeding the ruby code
 # in html-----> <%= @Products =products.whitelisted_products %>
@@ -29,7 +29,7 @@ scope :out_of_stock, -> { where("stock <= ?", 0) }
 
 validate :check_is_active 
     def check_is_active
-        if is_active? && !(price.blank?)
+        if is_active? && (price.blank?)
             errors.add(:is_active, "cannot be checked unless price and stock are filled out")
         end
     end

@@ -10,22 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_01_16_052824) do
+ActiveRecord::Schema[8.1].define(version: 2026_01_27_061941) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
+  create_table "admins", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "customers", force: :cascade do |t|
-    t.string "email" #use profanity : true
-    t.string "name"  #use profanity : true
+    t.string "email"
+    t.string "name"
   end
 
   create_table "products", force: :cascade do |t|
     t.datetime "created_at", null: false
-    t.text "description" # Regex validation to not allow special char
-    t.boolean "is_active" # use inbuilt validation only if it is checked acceptance:true
-    t.string "name" #try for alpha neumaric value
-    t.decimal "price" # if custom validation is True
-    t.integer "stock" # write the custom validation to add only if product is marked as is_active --> True
+    t.text "description"
+    t.boolean "is_active"
+    t.string "name"
+    t.decimal "price"
+    t.integer "stock"
     t.datetime "updated_at", null: false
   end
 end
