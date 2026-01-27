@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :products, except: [:show] do
+ resources :products, except: [:show]  do
     collection do
       get 'out_of_stock'
     end
@@ -32,8 +32,8 @@ resources :customers do
   # Defines the root path route ("/")
   # root "posts#index"
 
-# resources :products, only: [:new,:show]
-# resources :products, except: [:show, :new]
+# resources :products, only: [:show]
+#  resources :products, except: [:show]
 # resources :products, expect: [:new,:delete,:show]
 
 end
