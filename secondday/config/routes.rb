@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
- resources :products, except: [:show]  do
+ resources :products  do
     collection do
       get 'out_of_stock'
     end

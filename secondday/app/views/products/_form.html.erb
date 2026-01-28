@@ -35,7 +35,10 @@
     <%= form.label :is_active, style: "display: block" %>
     <%= form.checkbox :is_active %>
   </div>
-
+<div style="margin-bottom: 30px;">
+      <%= form.label :review, "review",style: "display:block; margin-bottom:8px; color:#4b5563; font-weight:500;" %>
+      <%= form.rich_text_area :review, class: "form-input" %>
+      </div>
   <div>
     <%= form.submit %>
   </div>

@@ -14,9 +14,9 @@ class CustomersController < ApplicationController
 
   # GET /customers/1 or /customers/1.json
 
-  # def show
- 
-  # end
+  def show
+    # raise params.inspect
+  end
 
   # GET /customers/new
   def new
@@ -25,6 +25,7 @@ class CustomersController < ApplicationController
 
   # GET /customers/1/edit
   def edit
+  
   end
 
   # POST /customers or /customers.json
@@ -44,6 +45,7 @@ class CustomersController < ApplicationController
 
   # PATCH/PUT /customers/1 or /customers/1.json
   def update
+    # raise customer_params.inspect
     respond_to do |format|
       if @customer.update(customer_params)
         format.html { redirect_to @customer, notice: "Customer was successfully updated.", status: :see_other }
@@ -73,7 +75,7 @@ class CustomersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def customer_params
-      params.expect(customer: [ :name, :email, :age ])
+      params.expect(customer: [ :name, :email, :age, :about_me])
     end
 
     

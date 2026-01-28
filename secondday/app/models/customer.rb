@@ -1,4 +1,5 @@
 class Customer < ApplicationRecord
+    has_rich_text :about_me
     # validates :name, presence: true, length: {maximum: 20, minimum:3}
     # validates :email, presence: true, uniqueness: true
     # validate :deny_profanit
@@ -9,11 +10,11 @@ class Customer < ApplicationRecord
 
 
 
-    # def deny_profanity
-    #     profanity_words = /lopper|nonsence|idiot/i 
-    #     errors.add(:name, "is inappropriate") if name =~ profanity_words
-    #     errors.add(:email, "is inappropriate") if email =~ profanity_words
-    # end
+    def deny_profanity
+        profanity_words = /lopper|nonsence|idiot/i 
+        errors.add(:name, "is inappropriate") if name =~ profanity_words
+        errors.add(:email, "is inappropriate") if email =~ profanity_words
+    end
 
     def check_email
         # check if it is present

@@ -25,7 +25,7 @@
       font-weight: 700;
       margin-bottom: 35px;
     ">
-      📝 Intern's Form
+      📝 Customer's Form
     </h2>
 
     <%= form_with(model: customer, local: true) do |form| %>
@@ -55,6 +55,14 @@
           transition: border 0.2s;
         ", onfocus: "this.style.border='#4f46e5'", onblur: "this.style.border='#d1d5db'" %>
       </div>
+
+      <div style="margin-bottom: 30px;">
+      <%= form.label :about_me, "About Me",style: "display:block; margin-bottom:8px; color:#4b5563; font-weight:500;" %>
+      <%= form.rich_text_area :about_me, class: "form-input" %>
+      </div>
+
+
+
 
       <!-- Submit Button -->
       <div style="text-align: center; margin-bottom: 25px;">

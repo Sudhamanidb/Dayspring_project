@@ -40,6 +40,14 @@
       </p>
     </div>
 
+    <p style="font-size: 16px; color: #333333;">
+        <strong>About_me:</strong> 
+        <span style="color: #1f2937;">
+        <%= @customer&.about_me || "-" %> 
+        </span>
+      </p>
+    </div>
+
     <!-- Action Buttons -->
     <div style="text-align: center; margin-top: 30px; display: flex; justify-content: center; gap: 15px;">
       <%= link_to "✏ Edit", edit_customer_path(@customer), style: "

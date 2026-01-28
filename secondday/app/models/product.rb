@@ -1,8 +1,6 @@
 class Product < ApplicationRecord
-    # inbuilt validations-->9th day...
-    # we should write scope only in model
-    # if you want new rount write a method in controller
-    
+    has_rich_text :review #the column name u want to give
+
 
 validates :name, presence: true, length:{maximum: 30, minimum: 4} 
 validates :price, numericality: { greater_than_or_equal_to: 1}

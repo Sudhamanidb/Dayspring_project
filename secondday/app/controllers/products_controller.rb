@@ -7,6 +7,7 @@ class ProductsController < ApplicationController
 
   # GET /products or /products.json
   def index
+      #  raise product_params.inspect
     @products = Product.all
   end
 
@@ -16,6 +17,7 @@ class ProductsController < ApplicationController
 
   # GET /products/new
   def new
+    #  raise product_params.inspect
     @product = Product.new
   end
 
@@ -27,8 +29,7 @@ class ProductsController < ApplicationController
   # save --> commit --> rolleback
   # POST /products or /products.json
   def create
-    @product = Product.new(product_params)
-
+  @product = Product.new(product_params)
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: "Product was successfully created." }
@@ -42,6 +43,7 @@ class ProductsController < ApplicationController
 
   # PATCH/PUT /products/1 or /products/1.json
   def update
+  #  raise product_params.inspect
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to @product, notice: "Product was successfully updated.", status: :see_other }
@@ -71,7 +73,7 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.expect(product: [ :name, :description, :price, :stock, :is_active ])
+      params.require(:product).permit(:code, :name, :category, :description, :price, :stock, :is_active, :review)  
     end
 
   
