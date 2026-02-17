@@ -1,5 +1,5 @@
 
-# Day 25 : Multi Database + Solid Queue / acync + Active Job 
+# Day 25 : Multi Database + Solid Queue / async + Active Job 
 
 * Main application data → stored in **Primary Database**
 * Background jobs → stored in **Queue Database**
