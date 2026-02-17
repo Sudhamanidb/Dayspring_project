@@ -1,0 +1,93 @@
+<div style="
+  min-height:100vh;
+  background: linear-gradient(120deg, #f8fafc, #ede9fe);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'Segoe UI', Inter, Arial;
+">
+
+  <div style="
+    width:400px;
+    background:white;
+    padding:30px;
+    border-radius:16px;
+    box-shadow:0 15px 35px rgba(0,0,0,0.1);
+  ">
+
+    <!-- 🔴 VALIDATION ERRORS -->
+    <% if customer.errors.any? %>
+      <div style="
+        background:#fee2e2;
+        color:#991b1b;
+        padding:10px;
+        border-radius:10px;
+        margin-bottom:15px;
+      ">
+        <ul style="margin:0; padding-left:18px;">
+          <% customer.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <!-- HEADING -->
+    <h2 style="text-align:center; color:#1E3A8A; margin-bottom:25px;">
+      📝 Customer Form
+    </h2>
+
+    <!-- FORM -->
+    <%= form_with model: customer, local:true do |form| %>
+
+      <div style="margin-bottom:15px;">
+        <%= form.label :name %>
+        <%= form.text_field :name, style:"width:100%; padding:10px;" %>
+      </div>
+
+      <div style="margin-bottom:15px;">
+        <%= form.label :email %>
+        <%= form.email_field :email, style:"width:100%; padding:10px;" %>
+      </div>
+
+      <div style="margin-bottom:15px;">
+        <%= form.label :dob %>
+        <%= form.date_field :dob, style:"width:100%; padding:10px;" %>
+      </div>
+
+
+      <div style="margin-bottom:15px;">
+        <%= form.label :phone_number %>
+        <%= form.text_field :phone_number, maxlength: 10 %>
+      </div>
+
+      <div style="margin-bottom:15px;">
+        <%= form.label :about_me %>
+        <%= form.rich_text_area :about_me, rows:3, style:"width:100%; padding:10px;" %>
+      </div>
+
+      <div style="margin-bottom:20px;">
+        <%= form.label :profile_photo %>
+        <%= form.file_field :profile_photo %>
+      </div>
+
+      <div style="text-align:center;">
+        <%= form.submit "Save", style:"
+          background:#1E3A8A;
+          color:white;
+          padding:10px 20px;
+          border:none;
+          border-radius:20px;
+          cursor:pointer;
+        " %>
+      </div>
+
+    <% end %>
+
+    <!-- BACK LINK -->
+    <div style="text-align:center; margin-top:15px;">
+      <%= link_to "Back", customers_path %>
+    </div>
+
+  </div>
+</div>

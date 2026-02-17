@@ -1,0 +1,16 @@
+<h1>Order Details</h1>
+
+<p>
+  <strong>Details:</strong>
+  <%= @order.details %>
+</p>
+
+<p>
+  <strong>Count:</strong>
+  <%= @order.count %>
+</p>
+
+<br>
+
+<%= link_to "Edit", edit_order_path(@order) %> |
+<%= link_to "Back", orders_path %>

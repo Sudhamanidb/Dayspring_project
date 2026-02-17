@@ -1,0 +1,131 @@
+/* app/assets/stylesheets/products.css */
+
+/* ===== Page Background ===== */
+.page {
+  min-height: 100vh;
+  background: linear-gradient(120deg, #5670f0, #9333ea, #f0f1f5);
+  padding: 40px;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* ===== Header ===== */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.page-header h1 {
+  color: #4f46e5;
+  font-size: 28px;
+  font-weight: 700;
+}
+.add-btn {
+  display: inline-block;
+  background: linear-gradient(90deg, #4f46e5, #6366f1);
+  color: white;
+  padding: 12px 22px;
+  text-decoration: none;
+  border-radius: 22px;
+  font-size: 14px;
+  font-weight: bold;
+  box-shadow: 0 8px 15px rgba(79, 70, 229, 0.3);
+  transition: all 0.3s ease;
+}
+.add-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 20px rgba(79, 70, 229, 0.4);
+}
+
+/* ===== Products Grid ===== */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+}
+
+/* ===== Product Card ===== */
+.product-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.15);
+}
+
+/* Product Image */
+.product-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+/* Product Info */
+.product-info {
+  flex: 1;
+}
+.product-info h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #1f2937;
+}
+.product-info p {
+  font-size: 14px;
+  color: #4b5563;
+  margin-bottom: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Price & Stock */
+.product-price {
+  font-weight: 700;
+  font-size: 16px;
+  color: #111827;
+}
+.product-stock {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* Badge Styling */
+.badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+}
+.badge-active { background: #059669; }
+.badge-inactive { background: #dc2626; }
+
+/* Action Buttons */
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.actions a {
+  text-decoration: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+.actions a[title="View"] { background: #2563eb; }
+.actions a[title="Edit"] { background: #059669; }
+.actions a[title="Delete"] { background: #dc2626; }
+.actions a:hover { opacity: 0.85; transform: translateY(-1px); }

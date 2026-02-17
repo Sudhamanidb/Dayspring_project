@@ -1,0 +1,79 @@
+<div style="
+  min-height:100vh;
+  background: linear-gradient(120deg, #f8fafc, #ede9fe);
+  padding:40px;
+  font-family:'Segoe UI', Inter, Arial;
+">
+
+  <div style="
+    max-width:600px;
+    margin:auto;
+    background:white;
+    padding:30px;
+    border-radius:16px;
+    box-shadow:0 15px 35px rgba(0,0,0,0.1);
+    text-align:center;
+  ">
+
+    <h2 style="color:#1E3A8A; margin-bottom:25px;">📦 Product Details</h2>
+
+    <p><strong>Name:</strong> <%= @product.name %></p>
+    <p><strong>Description:</strong> <%= @product.description || "-" %></p>
+    <p><strong>Price:</strong> <%= @product.price %></p>
+    <p><strong>Stock:</strong> <%= @product.stock %></p>
+    <p><strong>Active:</strong> <%= @product.is_active ? "Yes" : "No" %></p>
+
+    <div style="margin:20px 0;">
+      <strong>Review:</strong><br>
+      <% if @product.review.present? %>
+        <%= @product.review.body.to_s.html_safe %>
+      <% else %>
+        <p>No review</p>
+      <% end %>
+    </div>
+
+    <div style="margin:20px 0;">
+      <strong>Product Photos:</strong><br>
+      <% if @product.product_picture.attached? %>
+        <% @product.product_picture.each do |pic| %>
+          <% if pic.image? %>
+            <%= image_tag pic, width:80, height:80, style:"margin:5px; border-radius:8px;" %>
+          <% else %>
+            <p>Uploaded file is not an image</p>
+          <% end %>
+        <% end %>
+      <% else %>
+        <p>No Product Photos</p>
+      <% end %>
+    </div>
+
+    <div style="margin:20px 0;">
+      <strong>Invoice:</strong><br>
+      <% if @product.invoice.attached? %>
+        <%= link_to "Download Invoice", url_for(@product.invoice), target: "_blank", style:"color:#F59E0B; text-decoration:underline;" %>
+      <% else %>
+        <p>No invoice uploaded</p>
+      <% end %>
+    </div>
+
+    <div style="margin-top:25px;">
+      <%= link_to "Edit", edit_product_path(@product), style:"
+        background:#F59E0B;
+        color:white;
+        padding:8px 16px;
+        border-radius:18px;
+        text-decoration:none;
+        margin-right:10px;
+      " %>
+
+      <%= link_to "Back", products_path, style:"
+        background:#1E3A8A;
+        color:white;
+        padding:8px 16px;
+        border-radius:18px;
+        text-decoration:none;
+      " %>
+    </div>
+
+  </div>
+</div>

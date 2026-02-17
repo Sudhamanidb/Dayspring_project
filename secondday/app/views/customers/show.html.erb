@@ -1,0 +1,52 @@
+<div style="
+  min-height:100vh;
+  background: linear-gradient(120deg, #f8fafc, #ede9fe);
+  padding:40px;
+  font-family:'Segoe UI', Inter, Arial;
+">
+
+  <div style="
+    max-width:500px;
+    margin:auto;
+    background:white;
+    padding:30px;
+    border-radius:16px;
+    box-shadow:0 15px 35px rgba(0,0,0,0.1);
+    text-align:center;
+  ">
+
+    <h2 style="color:#1E3A8A; margin-bottom:25px;">👤 Customer Details</h2>
+
+    <% if @customer.profile_photo.attached? %>
+      <%= image_tag @customer.profile_photo, width:90, height:90,
+        style:"border-radius:50%; margin-bottom:20px;" %>
+    <% end %>
+
+    <p><strong>Name:</strong> <%= @customer.name %></p>
+    <p><strong>Email:</strong> <%= @customer.email %></p>
+    <p><strong>DOB:</strong> <%= @customer.dob %></p>
+    <p><strong>Phone Number:</strong> <%= @customer.phone_number %></p>
+
+    <p><strong>About:</strong> <%= @customer.about_me.body.to_s || "-" %></p>
+
+    <div style="margin-top:25px;">
+      <%= link_to "Edit", edit_customer_path(@customer), style:"
+        background:#F59E0B;
+        color:white;
+        padding:8px 16px;
+        border-radius:18px;
+        text-decoration:none;
+        margin-right:10px;
+      " %>
+
+      <%= link_to "Back", customers_path, style:"
+        background:#1E3A8A;
+        color:white;
+        padding:8px 16px;
+        border-radius:18px;
+        text-decoration:none;
+      " %>
+    </div>
+
+  </div>
+</div>

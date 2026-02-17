@@ -1,0 +1,19 @@
+<%= form_with model: @order, data: { turbo: false } do |form| %>
+
+  <div>
+    <%= form.label :details %><br>
+    <%= form.text_field :details %>
+  </div>
+
+  <br>
+
+  <div>
+    <%= form.label :count %><br>
+    <%= form.number_field :count %>
+  </div>
+
+  <br>
+
+  <%= form.submit %>
+
+<% end %>

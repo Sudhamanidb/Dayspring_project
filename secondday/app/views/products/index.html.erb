@@ -1,0 +1,36 @@
+<section class="page">
+  <div class="page-header">
+    <h1>Products</h1>
+    <%= link_to "➕ Add Product", new_product_path, class: "add-btn", title: "Add Product" %>
+  </div>
+
+  <div class="products-grid">
+    <% @products.each do |product| %>
+      <div class="product-card">
+        <% if product.product_picture.attached? %>
+          <%= image_tag url_for(product.product_picture.first), alt: product.name %>
+        <% else %>
+          <img src="https://via.placeholder.com/300x180?text=No+Image" alt="No Image">
+        <% end %>
+
+        <div class="product-info">
+          <h2><%= product.name %></h2>
+          <p title="<%= product.description %>"><%= truncate(product.description, length: 50) %></p>
+          <div class="product-price">₹ <%= product.price %></div>
+          <div class="product-stock">Stock: <%= product.stock %></div>
+          <% if product.is_active %>
+            <span class="badge badge-active">Active</span>
+          <% else %>
+            <span class="badge badge-inactive">Inactive</span>
+          <% end %>
+        </div>
+
+        <div class="actions">
+          <%= link_to "👁", product, title: "View" %>
+          <%= link_to "✏", edit_product_path(product), title: "Edit" %>
+          <%= link_to "🗑", product, method: :delete, data: { confirm: "Are you sure?" }, title: "Delete" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>

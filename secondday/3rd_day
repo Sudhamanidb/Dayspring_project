@@ -1,0 +1,58 @@
+📅 Day 3 – Rails Concepts & File Structure
+🔹 Main Features of Rails
+
+Convention over Configuration
+
+Syntactic Sugar
+
+Rails auto-creates MVC components when naming is correct
+
+🔹 Naming Conventions
+
+Model → Singular (Customer)
+
+Controller → Plural (CustomersController)
+
+Table → Plural (customers)
+
+🔹 Config Folder
+
+Controls how the application behaves
+
+Important files:
+
+config/database.yml – database connection
+
+config/routes.rb – URL routing
+
+config/application.rb – app configuration
+
+config/environment.rb – app entry point
+
+config/environments/
+
+development.rb
+
+test.rb
+
+production.rb
+
+🔹 DB Folder
+
+Handles database logic
+
+Important files:
+
+db/migrate/ – migration files
+
+db/schema.rb – current DB structure
+
+db/seeds.rb – seed data
+
+❌ Mistakes I Made (Day 3)
+
+Ignored naming conventions
+
+Tried editing schema.rb manually
+
+Didn’t understand routes → controller → action flow
