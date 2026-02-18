@@ -1,5 +1,5 @@
-class Animal 
-    
+
+class Animal     
     # attr_accessor :name  ---->   getter setter -->abstraction encapsulation
     # attr_reader :name   ----> only get
     def initialize(name)
@@ -13,7 +13,6 @@ class Animal
     def name=(new_name)  #--->setter method --> ruby allows operators in methods
         @name
     end
-
 
     def details
         puts "name is #{@name}" #string inter polation
@@ -82,8 +81,6 @@ puts"-------------------------------------------"
 
 # dif b/w class and instance vari
 
-
-
 # --------------
 
 # Duck typing
@@ -102,7 +99,6 @@ end
 
 def Print_Example(print_obj)
     print_obj.method1
-
 end
 
 Print_Example(Example1.new)
