@@ -1,0 +1,182 @@
+<!-- app/views/products/index.html.erb -->
+
+<style>
+/* ===== Page Background ===== */
+.page {
+  min-height: 100vh;
+  background: linear-gradient(120deg, #5670f0, #9333ea, #f0f1f5);
+  padding: 40px;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* ===== Card Container ===== */
+.card {
+  max-width: 1000px;
+  margin: auto;
+  background: #f0f1f5;
+  border-radius: 18px;
+  padding: 30px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+}
+
+/* ===== Header Title ===== */
+.table-title {
+  text-align: center;
+  color: #4f46e5;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+/* ===== Add Product Button ===== */
+.add-btn {
+  display: inline-block;
+  background: linear-gradient(90deg, #4f46e5, #6366f1);
+  color: white;
+  padding: 12px 22px;
+  text-decoration: none;
+  border-radius: 22px;
+  font-size: 14px;
+  font-weight: bold;
+  box-shadow: 0 8px 15px rgba(79, 70, 229, 0.3);
+  float: right;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+.add-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 20px rgba(79, 70, 229, 0.4);
+}
+
+/* ===== Table Styling ===== */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+/* Table Head */
+.table thead tr {
+  background: #4f46e5;
+  color: white;
+}
+.table th {
+  padding: 14px;
+  font-weight: 600;
+}
+
+/* Table Body */
+.table tbody tr {
+  border-bottom: 1px solid #eee;
+}
+.table tbody td {
+  padding: 14px;
+}
+
+/* Description Styling */
+.desc {
+  display: inline-block;
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Badge Styling */
+.badge {
+  padding: 5px 12px;
+  border-radius: 12px;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+}
+.badge-active {
+  background: #059669; /* green */
+}
+.badge-inactive {
+  background: #dc2626; /* red */
+}
+
+/* Actions Buttons */
+.actions a {
+  text-decoration: none;
+  color: white;
+  padding: 7px 14px;
+  border-radius: 18px;
+  font-size: 13px;
+  font-weight: 500;
+  margin: 0 2px;
+  display: inline-block;
+  transition: all 0.2s ease;
+}
+.actions a[title="View"] {
+  background: #2563eb; /* blue */
+}
+.actions a[title="Edit"] {
+  background: #059669; /* green */
+}
+.actions a[title="Delete"] {
+  background: #dc2626; /* red */
+}
+.actions a:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+</style>
+
+<section class="page">
+  <div class="card">
+    <!-- Header -->
+    <header class="page-header">
+      <div class="table-title">Product Table</div>
+      <%= link_to "➕ Add Product", new_product_path, class: "add-btn", title: "Add Product" %>
+      <div style="clear: both;"></div>
+    </header>
+
+    <!-- Products Table -->
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Stock</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @products.each do |product| %>
+          <tr>
+            <td><strong><%= product.name %></strong></td>
+            <td title="<%= product.description %>">
+              <span class="desc"><%= product.description %></span>
+            </td>
+            <td><strong>₹ <%= product.price %></strong></td>
+            <td><%= product.stock %></td>
+            <td>
+              <% if product.is_active %>
+                <span class="badge badge-active">Active</span>
+              <% else %>
+                <span class="badge badge-inactive">Inactive</span>
+              <% end %>
+            </td>
+            <td>
+              <div class="actions">
+                <%= link_to "👁", product, title: "View" %>
+                <%= link_to "✏", edit_product_path(product), title: "Edit" %>
+                <%= link_to "🗑", product,
+                      method: :delete,
+                      data: { confirm: "Are you sure?" },
+                      title: "Delete" %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</section>
