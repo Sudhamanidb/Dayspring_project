@@ -1,12 +1,12 @@
 
-# Day 25 : Multi Database + Solid Queue / acync + Active Job 
+# Day 25 : Multi Database + Solid Queue / async + Active Job 
 
 * Main application data → stored in **Primary Database**
 * Background jobs → stored in **Queue Database**
 * Active Job → framework that runs tasks in background
 * Solid Queue → engine that processes jobs
 
-Example :
+Ex :
 When an order is created, a reminder email is scheduled after 7 days.
 
 ---
