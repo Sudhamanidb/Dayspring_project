@@ -5,6 +5,14 @@ class ProductsController < ApplicationController
     @products = Product.out_of_stock
   end
 
+  def analytics
+  end
+  def post
+  end
+
+
+
+
   # GET /products or /products.json
   def index
       #  raise product_params.inspect

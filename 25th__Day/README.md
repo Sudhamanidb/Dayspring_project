@@ -16,11 +16,6 @@ When an order is created, a reminder email is scheduled after 7 days.
 ### `config/database.yml`
 
 ```yml
-default: &default
-  adapter: postgresql
-  encoding: unicode
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-
 development:
   primary:
     <<: *default
@@ -55,7 +50,6 @@ rails solid_queue:install
 ```
 
 created:
-
 * queue configuration files
 * job runner (`bin/jobs`)
 * queue schema
@@ -84,7 +78,7 @@ rails db:schema:load:queue
 ### `config/application.rb`
 
 ```ruby
-config.active_job.queue_adapter = :solid_queue  # tells Rails to use Solid Queue
+config.active_job.queue_adapter = :solid_queue  # tells Rails to use Solid Queue->INSTEAD 
 ```
 
 Points:
