@@ -1,24 +1,24 @@
-# 🚀 Auto Fulfill — Complete Docker Setup & Troubleshooting Guide
+# 🚀 Auto Fulfill — Docker Setup & Troubleshooting Guide
 
-> 💡 **This guide covers everything from scratch — first-time setup, daily usage, and all errors with fixes.**
+> This guide covers everything from scratch — first-time setup, daily usage, and all errors with fixes.
 
 ---
 
-## ✅ Requirements
+## Requirements
 
 Before starting, make sure these are installed:
 
-| Tool | How to Check | ✅ |
-|------|-------------|-----|
-| 🐳 Docker | `docker --version` | Required |
-| 🔧 Docker Compose | `docker-compose --version` | Required |
-| 🌿 Git | `git --version` | Required |
+| Tool | How to Check |
+|------|-------------|
+| Docker | `docker --version` |
+| Docker Compose | `docker-compose --version` |
+| Git | `git --version` |
 
 ---
 
 ## 🏗️ First-Time Setup (From Scratch)
 
-### 📦 Step 1 — Clone the project
+### Step 1 — Clone the project
 
 ```bash
 git clone <repo-url>
@@ -27,11 +27,11 @@ cd auto_fulfill
 
 ---
 
-### 🔑 Step 2 — Fix GPG keys in Dockerfile
+### Step 2 — Fix GPG keys in Dockerfile
 
-> ⚠️ **Why:** The base image (`phusion/passenger-ruby30`) has expired GPG keys. Without valid keys, `apt-get update` fails with exit code 100.
+> ⚠️ **Why:** The base image has expired GPG keys. Without valid keys, `apt-get update` fails with exit code 100.
 
-Make sure your `Dockerfile` has these two lines **before** `apt-get update`:
+Add these two lines to your `Dockerfile` **before** `apt-get update`:
 
 ```dockerfile
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 561F9B9CAC40B2F7
@@ -40,31 +40,31 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys D870AB033FB45BD1
 
 ---
 
-### 🔌 Step 3 — Fix port conflicts
+### Step 3 — Fix port conflicts
 
-> ⚠️ **Why:** If another project already uses ports `80` or `443`, Docker will fail to start with "port already allocated" error.
+> ⚠️ **Why:** If another project uses ports `80` or `443`, Docker will fail with "port already allocated" error.
 
 Edit `docker-compose.yml`:
 
 ```yaml
-# ❌ Change from:
+# Change from:
 ports:
   - '443:443'
   - '80:80'
 
-# ✅ Change to:
+# Change to:
 ports:
   - '4443:443'
   - '3000:80'
 ```
 
-Then access the app at: **`https://localhost:4443`**
+Access the app at: `https://localhost:4443`
 
 ---
 
-### 📝 Step 4 — Fix log file permissions
+### Step 4 — Fix log file permissions
 
-> ⚠️ **Why:** The app runs as a different user inside Docker. Without this, it can't write to log files and crashes on startup.
+> ⚠️ **Why:** The app runs as a different user inside Docker. Without this, it can't write log files and crashes on startup.
 
 ```bash
 mkdir -p log
@@ -73,77 +73,73 @@ chmod -R 777 log/
 
 ---
 
-### 👤 Step 5 — Add yourself to the Docker group *(first time only)*
+### Step 5 — Add yourself to the Docker group *(first time only)*
 
 ```bash
 sudo usermod -aG docker $USER
-newgrp docker       # ✅ apply without logout
-docker ps           # ✅ verify it works — should show empty list, no errors
+newgrp docker     # apply without logout
+docker ps         # verify it works
 ```
 
-> 💡 If `newgrp` doesn't work, fully log out and log back in, or reboot.
+> If `newgrp` doesn't work, fully log out and log back in, or reboot.
 
 ---
 
-### 🔨 Step 6 — Build the Docker image
+### Step 6 — Build the Docker image
 
 ```bash
 LOCAL_USER_ID=$(id -u) docker-compose build
 ```
 
-> 💡 **Why `LOCAL_USER_ID`:** This passes your current user's ID into Docker so all files created inside the container are owned by **you**, preventing permission errors on logs, tmp files, etc.
+> **Why `LOCAL_USER_ID`:** Passes your user ID into Docker so files inside the container are owned by you — this prevents permission errors on logs and tmp files.
 
 ---
 
-### ▶️ Step 7 — Start all containers
+### Step 7 — Start all containers
 
 **Terminal 1:**
 ```bash
 docker-compose up
 ```
 
-> ⏳ Wait until you see MySQL ready and Passenger core online in the logs before moving to the next step.
+> ⏳ Wait until you see MySQL ready and Passenger online in the logs before continuing.
 
 ---
 
-### 🗄️ Step 8 — Create database and run migrations
+### Step 8 — Create database and run migrations
 
 **Terminal 2 (new tab):**
 ```bash
-# 1️⃣ Create the database first
+# Create the database first
 LOCAL_USER_ID=$(id -u) docker-compose run --rm --user "$(id -u):$(id -g)" web bundle exec rake db:create
 
-# 2️⃣ Then run migrations
+# Then run migrations
 LOCAL_USER_ID=$(id -u) docker-compose run --rm --user "$(id -u):$(id -g)" web bundle exec rake db:migrate
 ```
 
-> 💡 **Why separate commands:** `db:create` creates the database, `db:migrate` creates all the tables. You must do create before migrate.
+> **Why separate commands:** `db:create` creates the database, `db:migrate` creates the tables. Create must come first.
 
 ---
 
-### 🌐 Step 9 — Open the app in browser
+### Step 9 — Open in browser
 
 ```
 https://localhost:4443
 ```
 
-> 🔐 When you see a security warning, click **Advanced → Proceed to localhost**.
-> This is expected — the app uses a self-signed SSL certificate for local development.
+> 🔐 When you see a security warning, click **Advanced → Proceed to localhost**. This is expected — the app uses a self-signed SSL certificate locally.
 
 ---
 
-## 📅 Daily Usage (After First Setup)
-
-Every day you work on this project:
+## 📅 Daily Usage
 
 ```bash
-# 🟢 Start containers
+# Start
 docker-compose up -d
 
-# 🌐 Open browser
-# https://localhost:4443
+# Open browser → https://localhost:4443
 
-# 🔴 Stop containers when done
+# Stop when done
 docker-compose down
 ```
 
@@ -151,32 +147,36 @@ docker-compose down
 
 ## ⚡ Quick Command Reference
 
-| 🎯 Task | 💻 Command |
-|---------|-----------|
-| 🟢 Start containers (background) | `docker-compose up -d` |
-| 📋 Start containers (see logs) | `docker-compose up` |
-| 🔴 Stop containers | `docker-compose down` |
-| 📊 Check container status | `docker-compose ps` |
-| 📄 View web logs | `docker-compose logs web` |
-| 📡 Follow web logs live | `docker-compose logs -f web` |
-| 💎 Open Rails console | `docker-compose exec web bash -c "cd /home/app/autofulfill && bundle exec rails console"` |
-| 🔄 Run migrations | `LOCAL_USER_ID=$(id -u) docker-compose run --rm --user "$(id -u):$(id -g)" web bundle exec rake db:migrate` |
-| ⚙️ Generate model/controller | `docker-compose run --rm --user "$(id -u):$(id -g)" web bundle exec rails g {model/migration/controller}` |
-| 🧹 Clean all Docker data | `docker system prune -f` |
+| Task | Command |
+|------|---------|
+| Start containers (background) | `docker-compose up -d` |
+| Start containers (with logs) | `docker-compose up` |
+| Stop containers | `docker-compose down` |
+| Check container status | `docker-compose ps` |
+| View web logs | `docker-compose logs web` |
+| Follow web logs live | `docker-compose logs -f web` |
+| Rails console | `docker-compose exec web bash -c "cd /home/app/autofulfill && bundle exec rails console"` |
+| Run migrations | `LOCAL_USER_ID=$(id -u) docker-compose run --rm --user "$(id -u):$(id -g)" web bundle exec rake db:migrate` |
+| Generate model/controller | `docker-compose run --rm --user "$(id -u):$(id -g)" web bundle exec rails g {model/migration/controller}` |
+| Clean all Docker data | `docker system prune -f` |
 
 ---
 
 ## 🗃️ Connecting to Database (DBeaver / TablePlus)
 
-| ⚙️ Setting | 📝 Value |
-|------------|---------|
-| 🖥️ Host | `mysql` |
-| 🗄️ Database | `autofulfill` |
-| 👤 Username | `root` |
-| 🔐 Password | `autofulfill` |
+Use these settings from your **host machine** — not the values from `database.yml`:
 
-> - `mysql` → only works **inside** Docker containers (Docker internal network)
-> - `localhost` → works from your **host machine** via the exposed port 
+| Setting | Value |
+|---------|-------|
+| Host | `localhost` |
+| Port | `3306` |
+| Database | `autofulfill` |
+| Username | `root` |
+| Password | `autofulfill` |
+
+> **Why `localhost` not `mysql`:**
+> - `mysql` → works only **inside** Docker (Docker internal network DNS)
+> - `localhost` → works from your **host machine** via the exposed port `3306`
 
 ---
 
@@ -184,22 +184,20 @@ docker-compose down
 
 ---
 
-### ❌ Error 1: `apt-get update` fails with exit code 100
+### ❌ Error 1: `apt-get update` fails — exit code 100
 
 ```
 The command '/bin/sh -c apt-get update' returned a non-zero code: 100
 W: GPG error: NO_PUBKEY D870AB033FB45BD1
 ```
 
-**🔍 Cause:** Expired GPG keys for Phusion Passenger apt repository.
+**Cause:** Expired GPG keys for the Phusion Passenger apt repository.
 
-**✅ Fix:** Add to Dockerfile before `apt-get update`:
+**Fix:** Add to Dockerfile before `apt-get update`, then rebuild:
 ```dockerfile
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 561F9B9CAC40B2F7
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys D870AB033FB45BD1
 ```
-
-Then rebuild:
 ```bash
 LOCAL_USER_ID=$(id -u) docker-compose build
 ```
@@ -212,16 +210,14 @@ LOCAL_USER_ID=$(id -u) docker-compose build
 Bind for 0.0.0.0:80 failed: port is already allocated
 ```
 
-**🔍 Cause:** Another project or service is using port 80 or 443.
+**Cause:** Another project is already using port 80 or 443.
 
-**✅ Fix:** Change ports in `docker-compose.yml`:
+**Fix:** Update `docker-compose.yml` and restart:
 ```yaml
 ports:
   - '4443:443'
   - '3000:80'
 ```
-
-Then restart:
 ```bash
 docker-compose down
 docker-compose up -d
@@ -236,9 +232,9 @@ Could not find rails-7.0.3, mysql2-0.5.7 ... in any of the sources
 Run `bundle install` to install missing gems.
 ```
 
-**🔍 Cause:** Gems are not installed in this container session. Each new `docker-compose run` starts fresh.
+**Cause:** Each new `docker-compose run` starts a fresh container — gems installed previously are not available.
 
-**✅ Fix:**
+**Fix:**
 ```bash
 LOCAL_USER_ID=$(id -u) docker-compose run --rm web bash -c "bundle install && bundle exec rake db:migrate"
 ```
@@ -251,16 +247,12 @@ LOCAL_USER_ID=$(id -u) docker-compose run --rm web bash -c "bundle install && bu
 Permission denied @ rb_sysopen - /home/app/autofulfill/log/development_resque.log
 ```
 
-**🔍 Cause:** The `log/` directory is owned by root. The app user inside Docker can't write to it.
+**Cause:** The `log/` directory is owned by root. The app user inside Docker cannot write to it.
 
-**✅ Fix** (run on host machine):
+**Fix** (run on your host machine, then restart):
 ```bash
 mkdir -p log
 chmod -R 777 log/
-```
-
-Then restart:
-```bash
 docker-compose down
 docker-compose up -d
 ```
@@ -273,21 +265,21 @@ docker-compose up -d
 Mysql2::Error::ConnectionError: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock'
 ```
 
-**🔍 Cause:** `database.yml` has wrong host OR mysql container isn't running yet.
+**Cause:** `database.yml` has the wrong host, or the mysql container isn't running.
 
-**✅ Fix 1 — Check `database.yml`:**
+**Fix 1 — Check `database.yml`:**
 ```yaml
 development:
-  host: mysql   # ✅ must be "mysql", not "127.0.0.1" or "localhost"
+  host: mysql   # must be "mysql", not "127.0.0.1" or "localhost"
 ```
 
-**✅ Fix 2 — Make sure all containers are running:**
+**Fix 2 — Make sure containers are running:**
 ```bash
 docker-compose up -d
-docker-compose ps   # check mysql shows "Up"
+docker-compose ps   # mysql should show "Up"
 ```
 
-**✅ Fix 3 — Run inside already running container:**
+**Fix 3 — Run inside the already running container:**
 ```bash
 docker-compose exec web bash -c "bundle exec rake db:create"
 ```
@@ -300,16 +292,16 @@ docker-compose exec web bash -c "bundle exec rake db:create"
 Mysql2::Error::ConnectionError: Unknown MySQL server host 'mysql' (-2)
 ```
 
-**🔍 Cause:** `docker-compose run` created a new isolated container not connected to the project network.
+**Cause:** `docker-compose run` creates a new isolated container that may not be connected to the project network.
 
-**✅ Fix:** Use `docker-compose exec` instead of `run`:
+**Fix:** Use `docker-compose exec` instead:
 ```bash
 docker-compose exec web bash -c "bundle exec rake db:create && bundle exec rake db:migrate"
 ```
 
-> 💡 **`run` vs `exec`:**
-> - `docker-compose run` → creates a **new** temporary container (may not be on the right network)
-> - `docker-compose exec` → runs inside the **already running** container (same network as mysql ✅)
+> **`run` vs `exec`:**
+> - `run` → creates a **new** container (isolated, may not reach mysql)
+> - `exec` → runs inside the **already running** container (connected to mysql ✅)
 
 ---
 
@@ -319,28 +311,28 @@ docker-compose exec web bash -c "bundle exec rake db:create && bundle exec rake 
 permission denied while trying to connect to the docker API at unix:///var/run/docker.sock
 ```
 
-**🔍 Cause:** Your user is not in the `docker` group.
+**Cause:** Your user is not in the `docker` group.
 
-**✅ Fix:**
+**Fix:**
 ```bash
 sudo usermod -aG docker $USER
-newgrp docker       # apply in current session
-docker ps           # verify — should work now
+newgrp docker     # apply in current session
+docker ps         # verify it works now
 ```
 
-> ⚠️ If `newgrp` doesn't work → fully log out and log back in, or run `sudo reboot`.
+> If `newgrp` doesn't work, log out and log back in, or run `sudo reboot`.
 
 ---
 
-### ❌ Error 8: ffi gem version removed
+### ❌ Error 8: ffi gem version removed from RubyGems
 
 ```
 Your bundle is locked to ffi (1.17.4-x86_64-linux) ... that version can no longer be found
 ```
 
-**🔍 Cause:** The gem author removed that specific version from RubyGems.org.
+**Cause:** The gem author removed that specific version from RubyGems.org.
 
-**✅ Fix:**
+**Fix:**
 ```bash
 docker-compose run --rm web bash -c "chmod -R 777 /usr/local/rvm/gems/ruby-3.0.3 && bundle update ffi && bundle install"
 ```
@@ -353,9 +345,9 @@ docker-compose run --rm web bash -c "chmod -R 777 /usr/local/rvm/gems/ruby-3.0.3
 NameError: uninitialized constant Gem::Request::ConnectionPools::Net
 ```
 
-**🔍 Cause:** RubyGems version in the container is too old/incompatible with Ruby 3.0.3.
+**Cause:** The RubyGems version inside the container is incompatible with Ruby 3.0.3.
 
-**✅ Fix:** Add to Dockerfile and rebuild:
+**Fix:** Add to Dockerfile and rebuild:
 ```dockerfile
 RUN curl -sL https://rubygems.org/rubygems/rubygems-3.3.27.tgz | tar xz \
     && cd rubygems-3.3.27 && ruby setup.rb --no-document \
@@ -372,9 +364,9 @@ Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock'
 Couldn't create 'db/test.sqlite3' database.
 ```
 
-**🔍 Cause:** The `test:` section in `database.yml` still has old sqlite3 config with no host.
+**Cause:** The `test:` section in `database.yml` still uses old sqlite3 config.
 
-**✅ Fix:** Update `config/database.yml`:
+**Fix — Update `config/database.yml`:**
 ```yaml
 test:
   <<: *default
@@ -385,14 +377,14 @@ test:
   encoding: utf8mb4
 ```
 
-Or skip test DB entirely:
+Or skip the test database entirely:
 ```bash
 docker-compose exec web bash -c "bundle exec rake db:migrate RAILS_ENV=development"
 ```
 
 ---
 
-## 📄 Correct Dockerfile (Final Working Version)
+## 📄 Final Dockerfile (Working Version)
 
 ```dockerfile
 FROM phusion/passenger-ruby30:2.1.0
@@ -406,7 +398,7 @@ ENV APP_NAME autofulfill
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
-# 🔑 Fix expired GPG keys
+# Fix expired GPG keys
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 561F9B9CAC40B2F7
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys D870AB033FB45BD1
 
@@ -445,7 +437,7 @@ CMD ["/sbin/my_init"]
 
 ---
 
-## 🐙 Correct docker-compose.yml
+## Final docker-compose.yml
 
 ```yaml
 version: '3.1'
@@ -462,8 +454,8 @@ services:
       - .:/home/app/autofulfill
       - tmp:/tmp
     ports:
-      - '4443:443'   # 🌐 https://localhost:4443
-      - '3000:80'    # 🌐 http://localhost:3000
+      - '4443:443'
+      - '3000:80'
   mysql:
     image: mysql:5.7
     ports:
@@ -499,28 +491,27 @@ volumes:
 
 ---
 
-## 🧠 Key Concepts to Remember
+## 🧠 Key Concepts
 
-| 💡 Concept | 📖 Explanation |
-|-----------|---------------|
+| Concept | Explanation |
+|---------|-------------|
 | `LOCAL_USER_ID=$(id -u)` | Passes your Linux user ID into Docker so file permissions match yours |
-| `docker-compose run` | Creates a **NEW** temporary container — gems not persisted |
-| `docker-compose exec` | Runs inside an **ALREADY RUNNING** container — use this for db tasks |
-| `host: mysql` in database.yml | Works inside Docker (Docker internal DNS) |
+| `docker-compose run` | Creates a **new** temporary container — gems not persisted between runs |
+| `docker-compose exec` | Runs inside an **already running** container — use this for db tasks |
+| `host: mysql` in database.yml | Works inside Docker (internal DNS) |
 | `host: localhost` in DBeaver | Works from your host machine via exposed port 3306 |
-| Port `4443:443` | Maps container's 443 → your machine's 4443 |
 | `chmod -R 777 log/` | Lets any user inside Docker write log files |
-| ❌ No `sudo` with docker-compose | `sudo` changes your user ID and breaks `LOCAL_USER_ID` |
+| No `sudo` with docker-compose | `sudo` changes your user ID and breaks `LOCAL_USER_ID` |
 
 ---
 
-## 🎉 You're all set!
+## If You Hit a New Error, Always Check
 
-If you hit any new error not listed here, always check:
+1. `docker-compose ps` — are all containers running?
+2. `docker-compose logs web` — what does the web container say?
+3. Did you use `LOCAL_USER_ID=$(id -u)` when building?
+4. Did you run `chmod -R 777 log/` on your host?
 
-1. 📋 `docker-compose ps` — are all containers running?
-2. 📄 `docker-compose logs web` — what does the web container say?
-3. 🔑 Did you use `LOCAL_USER_ID=$(id -u)` when building?
-4. 📝 Did you run `chmod -R 777 log/` on your host?
+---
 
-> 🙌 **Happy coding!** — Auto Fulfill Team
+> **Happy coding!** — Auto Fulfill Team 🙌
