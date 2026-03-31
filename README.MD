@@ -168,19 +168,15 @@ docker-compose down
 
 ## 🗃️ Connecting to Database (DBeaver / TablePlus)
 
-Use these settings — **not** the values from `database.yml`:
-
 | ⚙️ Setting | 📝 Value |
 |------------|---------|
-| 🖥️ Host | `localhost` |
-| 🔢 Port | `3306` |
+| 🖥️ Host | `mysql` |
 | 🗄️ Database | `autofulfill` |
 | 👤 Username | `root` |
 | 🔐 Password | `autofulfill` |
 
-> 💡 **Why `localhost` and not `mysql`:**
 > - `mysql` → only works **inside** Docker containers (Docker internal network)
-> - `localhost` → works from your **host machine** via the exposed port `3306`
+> - `localhost` → works from your **host machine** via the exposed port 
 
 ---
 
