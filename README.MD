@@ -169,12 +169,11 @@ Use these settings from your **host machine** — not the values from `database.
 | Setting | Value |
 |---------|-------|
 | Host | `localhost` |
-| Port | `3306` |
 | Database | `autofulfill` |
 | Username | `root` |
 | Password | `autofulfill` |
 
-> **Why `localhost` not `mysql`:**
+
 > - `mysql` → works only **inside** Docker (Docker internal network DNS)
 > - `localhost` → works from your **host machine** via the exposed port `3306`
 
@@ -505,7 +504,7 @@ volumes:
 
 ---
 
-## If You Hit a New Error, Always Check
+##  New Error, Always Check
 
 1. `docker-compose ps` — are all containers running?
 2. `docker-compose logs web` — what does the web container say?
@@ -513,5 +512,3 @@ volumes:
 4. Did you run `chmod -R 777 log/` on your host?
 
 ---
-
-> **Happy coding!** — Auto Fulfill Team 🙌
