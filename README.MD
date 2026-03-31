@@ -396,26 +396,6 @@ docker-compose exec web bash -c "bundle exec rake db:migrate RAILS_ENV=developme
 
 ---
 
-### ❌ Error 11: startup.sh failed with status 127
-
-```
-*** /etc/my_init.d/startup.sh failed with status 127
-```
-
-**🔍 Cause:** The shebang line `#!/bin/bash` is wrong — bash is at `/usr/bin/bash` in this container.
-
-**✅ Fix:** Update `startup.sh` shebang:
-```bash
-#!/usr/bin/bash    # ✅ correct path
-```
-
-Verify bash location first:
-```bash
-docker-compose run --rm web which bash
-```
-
----
-
 ## 📄 Correct Dockerfile (Final Working Version)
 
 ```dockerfile
